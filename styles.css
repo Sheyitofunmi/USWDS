@@ -1,0 +1,456 @@
+/* Reset and Base Styles */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      /* Animation Keyframes */
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInLeft {
+        from {
+          opacity: 0;
+          transform: translateX(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes fadeInRight {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      @keyframes scaleIn {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(1);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        50% {
+          transform: scale(1.05);
+          box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        100% {
+          transform: scale(1);
+          box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+      }
+
+      @keyframes float {
+        0% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+        100% {
+          transform: translateY(0px);
+        }
+      }
+
+      @keyframes gradientText {
+        0% {
+          background-position: 0% 50%;
+        }
+        50% {
+          background-position: 100% 50%;
+        }
+        100% {
+          background-position: 0% 50%;
+        }
+      }
+
+      @keyframes shimmer {
+        0% {
+          background-position: -1000px 0;
+        }
+        100% {
+          background-position: 1000px 0;
+        }
+      }
+
+      :root {
+        --color-primary: #1a4480;
+        --color-primary-lighter: #2e6cd0;
+        --color-primary-darker: #162e51;
+        --color-secondary: #d83933;
+        --color-accent: #00bde3;
+        --color-gold: #ffb700;
+        --font-family: "Source Sans Pro", "Helvetica Neue", Helvetica, Arial,
+          sans-serif;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: var(--font-family);
+        line-height: 1.6;
+        color: #1b1b1b;
+        background: #f7f9fc;
+        overflow-x: hidden;
+      }
+
+      .reveal-on-scroll {
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.8s ease-out;
+      }
+
+      .reveal-on-scroll.active {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Enhanced Banner */
+      .usa-banner {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary-darker),
+          var(--color-primary)
+        );
+        color: white;
+        padding: 0.75rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .usa-banner::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      .usa-banner__content {
+        text-align: center;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        animation: fadeInUp 0.8s ease-out;
+      }
+
+      /* Enhanced Header */
+      .usa-header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 1rem 0;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        transition: all 0.3s ease;
+      }
+
+      .usa-header.scrolled {
+        padding: 0.75rem 0;
+        background: rgba(255, 255, 255, 0.98);
+      }
+
+      .usa-nav {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .usa-logo {
+        font-size: 1.5rem;
+        font-weight: 700;
+        background: linear-gradient(
+          45deg,
+          var(--color-primary),
+          var(--color-accent)
+        );
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        animation: gradientText 3s ease infinite;
+        background-size: 200% 200%;
+      }
+
+      /* Enhanced Hero Section */
+      .usa-hero {
+        background: linear-gradient(
+          -45deg,
+          var(--color-primary-darker),
+          var(--color-primary),
+          var(--color-primary-lighter),
+          var(--color-accent)
+        );
+        background-size: 400% 400%;
+        animation: gradientText 15s ease infinite;
+        color: white;
+        padding: 8rem 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .usa-hero__content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        position: relative;
+        z-index: 1;
+      }
+
+      .usa-hero__heading {
+        font-size: 4rem;
+        font-weight: 800;
+        margin-bottom: 1.5rem;
+        animation: scaleIn 1s ease-out;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      .usa-hero__text {
+        font-size: 1.4rem;
+        margin-bottom: 2.5rem;
+        opacity: 0.9;
+        animation: fadeInUp 1s ease-out 0.3s backwards;
+      }
+
+      .usa-button {
+        display: inline-block;
+        padding: 1.2rem 2.5rem;
+        background: white;
+        color: var(--color-primary);
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        animation: pulse 2s infinite;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .usa-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.3),
+          transparent
+        );
+        transition: 0.5s;
+      }
+
+      .usa-button:hover::before {
+        left: 100%;
+      }
+
+      .usa-button:hover {
+        background: var(--color-primary);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      /* Enhanced Cards Section */
+      .usa-section {
+        padding: 6rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .usa-card-group {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2.5rem;
+        margin-top: 3rem;
+      }
+
+      .usa-card {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        transition: all 0.4s ease;
+        animation: float 6s ease-in-out infinite;
+      }
+
+      .usa-card:hover {
+        transform: translateY(-10px) scale(1.02);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+      }
+
+      .usa-card h2 {
+        color: var(--color-primary);
+        margin-bottom: 1.2rem;
+        font-size: 1.8rem;
+        position: relative;
+        padding-bottom: 1rem;
+      }
+
+      .usa-card h2::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 50px;
+        height: 3px;
+        background: var(--color-accent);
+        transition: width 0.3s ease;
+      }
+
+      .usa-card:hover h2::after {
+        width: 100px;
+      }
+
+      .usa-card p {
+        color: #505050;
+        line-height: 1.8;
+        font-size: 1.1rem;
+      }
+
+      /* Enhanced Footer */
+      .usa-footer {
+        background: linear-gradient(
+          135deg,
+          var(--color-primary-darker),
+          var(--color-primary)
+        );
+        color: white;
+        padding: 4rem 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .usa-footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 200%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.1),
+          transparent
+        );
+        animation: shimmer 3s infinite;
+      }
+
+      .usa-footer__content {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .usa-footer a {
+        color: white;
+        text-decoration: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+        transition: all 0.3s ease;
+        padding-bottom: 2px;
+      }
+
+      .usa-footer a:hover {
+        border-color: var(--color-gold);
+        color: var(--color-gold);
+      }
+
+      /* Responsive Design */
+      @media (max-width: 1200px) {
+        .usa-hero__heading {
+          font-size: 3.5rem;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .usa-hero__heading {
+          font-size: 3rem;
+        }
+        .usa-hero__text {
+          font-size: 1.2rem;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .usa-hero {
+          padding: 6rem 0;
+        }
+        .usa-hero__heading {
+          font-size: 2.5rem;
+        }
+        .usa-hero__text {
+          font-size: 1.1rem;
+        }
+        .usa-card-group {
+          grid-template-columns: 1fr;
+        }
+        .usa-card {
+          padding: 2rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .usa-hero__heading {
+          font-size: 2rem;
+        }
+        .usa-button {
+          padding: 1rem 2rem;
+          font-size: 1rem;
+        }
+        .usa-card h2 {
+          font-size: 1.5rem;
+        }
+        .usa-card p {
+          font-size: 1rem;
+        }
+      }
+ 
